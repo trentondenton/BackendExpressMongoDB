@@ -1,0 +1,790 @@
+{
+	"info": {
+		"_postman_id": "8d8b2d20-6eac-45af-a3b1-9b905c8476f2",
+		"name": "Bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16080156"
+	},
+	"item": [
+		{
+			"name": "Bootcamps",
+			"item": [
+				{
+					"name": "All Bootcamps",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}bootcamps",
+							"host": [
+								"{{URL}}bootcamps"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bootcamp by Radius",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}bootcamps/radius/67455/1400",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"path": [
+								"radius",
+								"67455",
+								"1400"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bootcamp by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}bootcamps/5d725a037b292f5f8ceff787",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"path": [
+								"5d725a037b292f5f8ceff787"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bootcamp Pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}bootcamps?page=1&limit=2",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bootcamp Photo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}bootcamps/5d725a1b7b292f5f8ceff788/photo",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"path": [
+								"5d725a1b7b292f5f8ceff788",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Bootcamp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Trenton Bootcamp 2\",\r\n    \"description\": \"Is coding your passion? Codemasters will give you the skills and the tools to become the best developer possible. We specialize in front end and full stack web development\",\r\n    \"website\": \"https://trenton.com\",\r\n    \"phone\": \"(444) 444-4444\",\r\n    \"email\": \"enroll@devcentral.com\",\r\n    \"address\": \"207 Second St, Lincoln, KS 67455\",\r\n    \"careers\": [\r\n        \"Mobile Development\"\r\n    ],\r\n    \"housing\": false,\r\n    \"jobAssistance\": true,\r\n    \"jobGuarantee\": true,\r\n    \"acceptGi\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}bootcamps",
+							"host": [
+								"{{URL}}bootcamps"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Bootcamp",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"housing\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}bootcamps/630bb24ffaf8e80218730b75",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"path": [
+								"630bb24ffaf8e80218730b75"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Bootcamp",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}bootcamps/630bb0bffaf8e80218730b5e",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"path": [
+								"630bb0bffaf8e80218730b5e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "All Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}courses",
+							"host": [
+								"{{URL}}courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Courses by Bootcamp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}bootcamps/5d725a1b7b292f5f8ceff788/courses",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"path": [
+								"5d725a1b7b292f5f8ceff788",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}courses/5d725cd2c4ded7bcb480eaa2",
+							"host": [
+								"{{URL}}courses"
+							],
+							"path": [
+								"5d725cd2c4ded7bcb480eaa2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"UI/UX\",\r\n    \"description\": \"In this course you will learn to create beautiful interfaces. It is a mix of design and development to create modern user experiences on both web and mobile\",\r\n    \"weeks\": \"12\",\r\n    \"tuition\": 10000,\r\n    \"minimumSkill\": \"intermediate\",\r\n    \"scholarshipAvailable\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}bootcamps/630bb24ffaf8e80218730b75/courses",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"path": [
+								"630bb24ffaf8e80218730b75",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"A friggen title\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}courses/5d725cd2c4ded7bcb480eaa2",
+							"host": [
+								"{{URL}}courses"
+							],
+							"path": [
+								"5d725cd2c4ded7bcb480eaa2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}courses/5d725cd2c4ded7bcb480eaa2",
+							"host": [
+								"{{URL}}courses"
+							],
+							"path": [
+								"5d725cd2c4ded7bcb480eaa2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n\"name\": \"Trenton\",\r\n\"email\": \"trenton1@gmail.com\",\r\n\"password\": \"trenton1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/register",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"trenton1@gmail.com\",\r\n    \"password\": \"trenton1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/login",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}auth/me",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"trenton@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/forgotpassword",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"forgotpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"trenton\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/resetpassword/1f30551f40d9bdfe2b2e37dab29b54bdeceed464",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"resetpassword",
+								"1f30551f40d9bdfe2b2e37dab29b54bdeceed464"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Trenton Denton\",\r\n    \"email\": \"trenton@trenton.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/updatedetails",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"updatedetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\": \"trenton\",\r\n    \"newPassword\": \"trenton1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}auth/updatepassword",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"updatepassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log Out User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}auth/logout",
+							"host": [
+								"{{URL}}auth"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}users",
+							"host": [
+								"{{URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}users/5c8a1d5b0190b214360dc039",
+							"host": [
+								"{{URL}}users"
+							],
+							"path": [
+								"5c8a1d5b0190b214360dc039"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Some Guy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}users/5c8a1d5b0190b214360dc039",
+							"host": [
+								"{{URL}}users"
+							],
+							"path": [
+								"5c8a1d5b0190b214360dc039"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kai Denton\",\r\n    \"email\": \"kai@trenton.com\",\r\n    \"password\": \"kaidenton\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}users",
+							"host": [
+								"{{URL}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}users/630bd4e1b14420038427d6ad",
+							"host": [
+								"{{URL}}users"
+							],
+							"path": [
+								"630bd4e1b14420038427d6ad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}reviews",
+							"host": [
+								"{{URL}}reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review by Bootcamp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}bootcamps/5d725a1b7b292f5f8ceff788/reviews",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"path": [
+								"5d725a1b7b292f5f8ceff788",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}reviews/5d7a514b5d2c12c7449be025",
+							"host": [
+								"{{URL}}reviews"
+							],
+							"path": [
+								"5d7a514b5d2c12c7449be025"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Barfz\",\r\n    \"text\": \"Hola, I am tired.\",\r\n    \"rating\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}bootcamps/5d725a1b7b292f5f8ceff788/reviews",
+							"host": [
+								"{{URL}}bootcamps"
+							],
+							"path": [
+								"5d725a1b7b292f5f8ceff788",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"FFS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}reviews/630be2f694fb465e28f90f11",
+							"host": [
+								"{{URL}}reviews"
+							],
+							"path": [
+								"630be2f694fb465e28f90f11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"FFS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}reviews/630be2f694fb465e28f90f11",
+							"host": [
+								"{{URL}}reviews"
+							],
+							"path": [
+								"630be2f694fb465e28f90f11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
