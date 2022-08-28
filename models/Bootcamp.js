@@ -31,7 +31,7 @@ const BootcampSchema = new mongoose.Schema({
     type: String,
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      'Please add a valide email address'
+      'Please add a valid email address'
     ]
   },
   address: {
@@ -98,6 +98,11 @@ const BootcampSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
+  }
 }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true }

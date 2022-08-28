@@ -8,8 +8,6 @@ const Bootcamp = require('../models/Bootcamp');
 // @route     GET /api/v1/bootcamps
 // @access    Public
 exports.getBootcamps = asyncHandler(async (req, res, next) => {
-
-
   res
     .status(200)
     .json(res.advancedResults);
@@ -33,8 +31,17 @@ exports.getBootcamp = asyncHandler(async (req, res, next) => {
 // @route     POST /api/v1/bootcamps
 // @access    Private
 exports.createBootcamp = asyncHandler(async (req, res, next) => {
-  const bootcamp = await Bootcamp.create(req.body)
+  // Add User to Request
+  req.body.user = req.user.id;
 
+  // Check if Published Bootcamp
+  const publishedBootcamp = await Bootcamp.findOne({ user: req.user.id });
+  // If User ! Admin, can only add 1 Bootcamp
+  if (publishedBootcamp && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`The user with ID ${req.user.id} has already published a bootcamp`, 400));
+  }
+
+  const bootcamp = await Bootcamp.create(req.body);
   res
     .status(201)
     .json({ success: true, data: bootcamp });
@@ -44,14 +51,22 @@ exports.createBootcamp = asyncHandler(async (req, res, next) => {
 // @route     PUT /api/v1/bootcamps/:id
 // @access    Private
 exports.updateBootcamp = asyncHandler(async (req, res, next) => {
-  const bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true
-  });
+  let bootcamp = await Bootcamp.findById(req.params.id);
 
   if (!bootcamp) {
     return next(new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}.`, 404))
   }
+
+  // Check User is Owner of Bootcamp
+  if (bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User with ${req.params.id} is not authorized to update this bootcamp`, 401));
+  }
+
+  bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true
+  });
+
   res
     .status(200)
     .json({ success: true, data: bootcamp });
@@ -61,10 +76,15 @@ exports.updateBootcamp = asyncHandler(async (req, res, next) => {
 // @route     DELETE /api/v1/bootcamps/:id
 // @access    Private
 exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
-  const bootcamp = await Bootcamp.findById(req.params.id)
+  const bootcamp = await Bootcamp.findById(req.params.id);
 
   if (!bootcamp) {
-    return next(new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}.`, 404))
+    return next(new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}.`, 404));
+  }
+
+  // Check User is Owner of Bootcamp
+  if (bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User with ${req.params.id} is not authorized to delete this bootcamp`, 401));
   }
 
   bootcamp.remove();
@@ -80,9 +100,7 @@ exports.getBootcampsInRadius = asyncHandler(async (req, res, next) => {
   const loc = await geocoder.geocode(zipcode);
   const lat = loc[0].latitude;
   const lng = loc[0].longitude;
-  // Calculate Radius
-  // Divide Distance by Radius of Earth
-  // Radius of Earth: 3,963 mi | 6,378 km
+  // Calculate Radius => Divide Distance by Radius of Earth (3,963 mi || 6,378 km)
   const radius = distance / 3963;
 
   const bootcamps = await Bootcamp.find({
@@ -106,6 +124,12 @@ exports.bootcampPhotoUpload = asyncHandler(async (req, res, next) => {
   if (!bootcamp) {
     return next(new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}.`, 404))
   }
+
+  // Check User is Owner of Bootcamp
+  if (bootcamp.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(new ErrorResponse(`User with ${req.params.id} is not authorized to update photo`, 401));
+  }
+
   if (!req.files) {
     return next(new ErrorResponse(`Please upload a file`, 400));
   }
